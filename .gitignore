@@ -1,0 +1,9 @@
+node_modules
+dist
+
+# macOS garbage
+.DS_Store
+
+# tests
+coverage
+.nyc_output
