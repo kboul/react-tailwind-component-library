@@ -24,13 +24,10 @@ export default [
     plugins: [
       resolve(),
       commonjs(),
-      typescript({ tsconfig: "./tsconfig.json" }),
+      typescript({ tsconfig: "./tsconfig.prod.json" }),
       peerDepsExternal(),
       terser(),
-      postcss({
-        extract: true,
-        minimize: true,
-      }),
+      postcss({ extract: true, minimize: true }),
     ],
     external: [...Object.keys(packageJson.peerDependencies), /\.css$/],
   },

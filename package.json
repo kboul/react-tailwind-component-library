@@ -9,7 +9,11 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "rollup": "NODE_ENV=production rollup -c --bundleConfigAsCjs",
-    "start": "NODE_ENV=development rollup -c -w --bundleConfigAsCjs"
+    "start": "NODE_ENV=development rollup -c -w --bundleConfigAsCjs",
+    "check-types": "tsc",
+    "test:open": "cypress open --component",
+    "test:run": "cypress run --component",
+    "test:coverage": "nyc report --reporter=html && open coverage/index.html"
   },
   "keywords": [
     "react",
@@ -19,6 +23,8 @@
   "author": "kboul",
   "license": "MIT",
   "devDependencies": {
+    "@cypress/code-coverage": "^3.14.4",
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
     "@rollup/plugin-commonjs": "^28.0.3",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-terser": "^0.4.4",
@@ -26,9 +32,14 @@
     "@tailwindcss/postcss": "^4.1.10",
     "@types/node": "^24.0.1",
     "@types/react": "^19.1.8",
+    "@vitejs/plugin-react": "^4.5.2",
     "autoprefixer": "^10.4.21",
+    "babel-plugin-istanbul": "^7.0.0",
     "clsx": "^2.1.1",
+    "cypress": "^14.4.1",
+    "nyc": "^17.1.0",
     "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "rollup": "^4.43.0",
     "rollup-plugin-dts": "^6.2.1",
     "rollup-plugin-peer-deps-external": "^2.2.4",
@@ -37,7 +48,8 @@
     "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.10",
     "tslib": "^2.8.1",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
   },
   "peerDependencies": {
     "@tailwindcss/postcss": "^4",
