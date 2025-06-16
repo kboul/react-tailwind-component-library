@@ -18,8 +18,8 @@ export default [
         preserveModulesRoot: "src",
         format: "es",
         sourcemap: true,
-        exports: "named",
-      },
+        exports: "named"
+      }
     ],
     plugins: [
       resolve(),
@@ -27,14 +27,23 @@ export default [
       typescript({ tsconfig: "./tsconfig.prod.json" }),
       peerDepsExternal(),
       terser(),
-      postcss({ extract: true, minimize: true }),
+      postcss({
+        config: {
+          path: "./postcss.config.js"
+        },
+        extensions: [".css"],
+        minimize: true,
+        inject: {
+          insertAt: "top"
+        }
+      })
     ],
-    external: [...Object.keys(packageJson.peerDependencies), /\.css$/],
+    external: [...Object.keys(packageJson.peerDependencies), /\.css$/]
   },
   {
     input: "dist/types/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts.default()],
-    external: [/\.css$/],
-  },
+    external: [/\.css$/]
+  }
 ];

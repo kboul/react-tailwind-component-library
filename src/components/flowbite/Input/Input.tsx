@@ -1,7 +1,7 @@
 import React from "react";
 
-import { cn } from "../../utils";
-import "../../index.css";
+import { cn } from "../../../utils";
+import "../../../styles.css";
 
 type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
   className?: string;
